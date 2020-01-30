@@ -24,6 +24,9 @@ export class CalculatorView {
       inputCurrencySelector.innerHTML += currencyOption;
       outputCurrencySelector.innerHTML += currencyOption;
     });
+
+    inputCurrencySelector.value = "EUR";
+    outputCurrencySelector.value = "GBP";
   }
   setOutputInteger(number) {
     return (output.innerHTML = parseInt(number));
@@ -39,6 +42,7 @@ export class CalculatorView {
       };
       callback(selection);
     };
+    selectionChangedCallback();
     inputCurrencySelector.addEventListener("change", selectionChangedCallback);
     outputCurrencySelector.addEventListener("change", selectionChangedCallback);
   }
@@ -51,9 +55,3 @@ export class CalculatorView {
     }
   }
 }
-
-// var calc = new CalculatorView();
-// calc.setButtonsClickCallback(id => {
-//   console.log(id);
-//   calc.displayInteger(id);
-// });

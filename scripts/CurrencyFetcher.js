@@ -1,11 +1,8 @@
 export function getExchangeRates() {
   var xhttp = new XMLHttpRequest();
 
-  // xhttp.onreadystatechange = parseCurrencies;
-
   xhttp.open(
     "GET",
-    // "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
     "https://devweb2019.cis.strath.ac.uk/~aes02112/ecbxml.php",
     false
   );
