@@ -10,12 +10,22 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <title>Currency Calculator</title>
-    <link rel="stylesheet" type"text/css" href="calculator.css">
+    <link rel="stylesheet" type"text/css" href="styles/calculator.css">
   </head>
   <body>
     <header>Currency Calculator</header>
     <div class="grid-container">
-      <div id="output"> <span>12€</span></div>
+      <div id="display">
+        <span id="input">0</span>
+        <div class="select-box">
+          <select id="targetSel" name="Target Currency"></select>
+        </div>
+        <i id="arrow" class="fas fa-exchange-alt"></i>
+        <span id="output">0</span>
+        <div class="select-box">
+          <select id="originSel" name="Origin Currency"></select>
+        </div>
+      </div>
       <div class="grid-item"><button id="7">7</button></div>
       <div class="grid-item"><button id="8">8</button></div>
       <div class="grid-item"><button id="9">9</button></div>
@@ -30,8 +40,6 @@
       <div class="grid-item"><button id="=">=</button></div>
     </div>
     <footer>© 2020 Manuel Hufnagel</footer>
-    <script src="CalculatorView.js"></script>
-    <script src="CalculatorModel.js"></script>
-    <script src="CalculatorController.js"></script>
+    <script type="module" src="scripts/CalculatorController.js"></script>
   </body>
 </html>

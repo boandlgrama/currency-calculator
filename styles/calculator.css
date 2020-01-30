@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+}
+.grid-container {
+  width: fit-content;
+  display: grid;
+  margin: 0;
+  grid-template-columns: auto auto auto;
+}
+#display {
+  grid-column: 1 / span 3;
+  display: grid;
+  grid-template-columns: 27% 18% 10% 27% 18%;
+  padding-right: 0.3rem;
+  border-style: solid;
+}
+
+select {
+  -webkit-appearance: button;
+}
+
+#targetSel,
+#originSel {
+  border: 0;
+  font-size: 2rem;
+  text-align: center;
+  padding: 0 0 0.2rem 0;
+}
+#input,
+#output {
+  font-size: 3rem;
+  font-family: calcFont;
+  text-align: right;
+  height: 100%;
+  width: 100%;
+}
+#arrow {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.grid-item {
+  width: 33.33vw;
+  height: 33.33vw;
+}
+
+.grid-item button {
+  font-size: 3rem;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+header,
+footer {
+  text-align: center;
+}
+
+header {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+@font-face {
+  font-family: calcFont;
+  src: url(../res/Calculator.ttf);
+}
