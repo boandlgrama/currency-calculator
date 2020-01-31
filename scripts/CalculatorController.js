@@ -1,24 +1,22 @@
 import { CalculatorView } from "./CalculatorView.js";
 import { CalculatorModel } from "./CalculatorModel.js";
 
-var view = null,
+var view = new CalculatorView(),
   model = null,
   controller = null;
 
 class CalculatorController {
-  constructor() {
-    model = new CalculatorModel();
-    let availableCurrencies = model.getCurrencySymbols();
-    view = new CalculatorView(availableCurrencies);
-  }
   init() {
+    model = new CalculatorModel(currencies => {
+      view.setAvailableCurrencies(currencies);
+      view.setCurrencyChangedCallback(model.setCurrencies);
+      view.setFeeChangedCallback(model.setTransactionFee);
+    });
     view.setButtonsClickCallback(input => {
       model.handleInput(input);
       view.setInputInteger(model.getCurrentInputValue());
       view.setOutputInteger(model.getCurrentOutputValue());
     });
-    view.setCurrencyChangedCallback(model.setCurrencies);
-    view.setFeeChangedCallback(model.setTransactionFee);
   }
 }
 

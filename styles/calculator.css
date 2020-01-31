@@ -99,6 +99,8 @@ header {
 }
 #feeSel{
   color: white;
+  background: black;
+  border-color: black;
 }
 footer {
   text-align: center;

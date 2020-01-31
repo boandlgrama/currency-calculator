@@ -19,15 +19,9 @@ var input = document.getElementById("input"),
   feeSelector = document.getElementById("feeSel");
 
 export class CalculatorView {
-  constructor(availableCurrencies) {
-    availableCurrencies.forEach(currency => {
-      let currencyOption = `<option value="${currency}">${currency}</option>\n`;
-      inputCurrencySelector.innerHTML += currencyOption;
-      outputCurrencySelector.innerHTML += currencyOption;
-    });
-
-    inputCurrencySelector.value = "EUR";
-    outputCurrencySelector.value = "GBP";
+  constructor() {
+    feeSelector.value =
+      window.localStorage.fee == null ? "0.00" : window.localStorage.fee;
   }
   setOutputInteger(number) {
     return (output.innerHTML = parseInt(number));
@@ -42,6 +36,8 @@ export class CalculatorView {
         output: outputCurrencySelector.value
       };
       callback(selection);
+      window.localStorage.inputCurrency = inputCurrencySelector.value;
+      window.localStorage.outputCurrency = outputCurrencySelector.value;
     };
     selectionChangedCallback();
     inputCurrencySelector.addEventListener("change", selectionChangedCallback);
@@ -49,7 +45,11 @@ export class CalculatorView {
   }
 
   setFeeChangedCallback(callback) {
-    feeSelector.addEventListener("change", () => callback(feeSelector.value));
+    feeSelector.addEventListener("change", () => {
+      callback(feeSelector.value);
+      window.localStorage.fee = feeSelector.value;
+    });
+    callback(feeSelector.value);
   }
 
   setButtonsClickCallback(callback) {
@@ -58,5 +58,20 @@ export class CalculatorView {
       let btn = button;
       button.addEventListener("click", () => callback(btn.id));
     }
+  }
+  setAvailableCurrencies(availableCurrencies) {
+    availableCurrencies.forEach(currency => {
+      let currencyOption = `<option value="${currency}">${currency}</option>\n`;
+      inputCurrencySelector.innerHTML += currencyOption;
+      outputCurrencySelector.innerHTML += currencyOption;
+    });
+    inputCurrencySelector.value =
+      window.localStorage.inputCurrency == null
+        ? "EUR"
+        : window.localStorage.inputCurrency;
+    outputCurrencySelector.value =
+      window.localStorage.outputCurrency == null
+        ? "GBP"
+        : window.localStorage.outputCurrency;
   }
 }

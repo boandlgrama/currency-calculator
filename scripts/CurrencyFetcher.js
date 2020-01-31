@@ -1,13 +1,16 @@
-export function getExchangeRates() {
+export function getExchangeRates(callback) {
   var xhttp = new XMLHttpRequest();
-
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+      callback(parseCurrencies.bind(xhttp)());
+    }
+  };
   xhttp.open(
     "GET",
     "https://devweb2019.cis.strath.ac.uk/~aes02112/ecbxml.php",
-    false
+    true
   );
   xhttp.send();
-  return parseCurrencies.bind(xhttp)();
 }
 
 function parseCurrencies() {
@@ -27,7 +30,6 @@ function parseCurrencies() {
       return currency;
     });
     currencies.push({ name: "EUR", rate: "1.0" });
-    console.log(currencies);
     return currencies;
   }
 }

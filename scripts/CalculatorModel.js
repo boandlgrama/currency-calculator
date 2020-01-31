@@ -9,13 +9,19 @@ var displayedInputValue = 0,
   transactionFee = 0.0;
 
 export class CalculatorModel {
-  constructor() {
-    exchangeRates = getExchangeRates();
-  }
-
-  getCurrencySymbols() {
-    console.log(exchangeRates);
-    return exchangeRates.map(currency => currency.name);
+  constructor(getCurrencySymbolsCallback) {
+    if (navigator.onLine) {
+      getExchangeRates(rates => {
+        exchangeRates = rates;
+        window.localStorage.exchangeRates = JSON.stringify(exchangeRates);
+        getCurrencySymbolsCallback(
+          exchangeRates.map(currency => currency.name)
+        );
+      });
+    } else {
+      exchangeRates = JSON.parse(window.localStorage.exchangeRates);
+      getCurrencySymbolsCallback(exchangeRates.map(currency => currency.name));
+    }
   }
   handleInput(input) {
     switch (input) {
@@ -24,9 +30,13 @@ export class CalculatorModel {
         break;
       }
       case "eq": {
-        console.log(`Rin: ${inputRate} Rout: ${outputRate}`);
-        displayedOutputValue =
-          (inputRate * displayedInputValue * (1 - transactionFee)) / outputRate;
+        console.log(
+          `Input: ${displayedInputValue} Rin: ${inputRate} Rout: ${outputRate} TransactionFee: ${1.0 + transactionFee}`
+        );
+        let amountWithFee = (1.0 + transactionFee) * displayedInputValue;
+        console.log(`amountWithFee: ${amountWithFee}`);
+        displayedOutputValue = inputRate * amountWithFee / outputRate;
+        console.log(`Calculated output: ${displayedOutputValue}`);
         isCalculated = true;
         break;
       }
@@ -46,15 +56,11 @@ export class CalculatorModel {
     return displayedInputValue;
   }
   setCurrencies(currencies) {
-    console.log(currencies);
-    console.log(exchangeRates);
     inputRate = exchangeRates.find(item => item.name === currencies.input).rate;
-    console.log(inputRate);
     outputRate = exchangeRates.find(item => item.name === currencies.output)
       .rate;
-    console.log(outputRate);
   }
   setTransactionFee(fee) {
-    transactionFee = fee;
+    transactionFee = parseFloat(fee);
   }
 }
