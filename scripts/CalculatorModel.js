@@ -22,7 +22,7 @@ export class CalculatorModel {
         displayedInputValue = 0;
         break;
       }
-      case "=": {
+      case "eq": {
         console.log(`Rin: ${inputRate} Rout: ${outputRate}`);
         displayedOutputValue = (inputRate * displayedInputValue) / outputRate;
         isCalculated = true;

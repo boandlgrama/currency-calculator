@@ -23,4 +23,14 @@ class CalculatorController {
 
 controller = new CalculatorController();
 
+document.body.addEventListener(
+  "touchmove",
+  function(event) {
+    event.preventDefault();
+  },
+  {
+    passive: false,
+    useCapture: false
+  }
+);
 window.addEventListener("load", controller.init);

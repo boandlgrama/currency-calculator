@@ -11,7 +11,7 @@ var input = document.getElementById("input"),
     document.getElementById("7"),
     document.getElementById("8"),
     document.getElementById("9"),
-    document.getElementById("="),
+    document.getElementById("eq"),
     document.getElementById("C")
   ],
   inputCurrencySelector = document.getElementById("originSel"),
