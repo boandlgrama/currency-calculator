@@ -15,7 +15,8 @@ var input = document.getElementById("input"),
     document.getElementById("C")
   ],
   inputCurrencySelector = document.getElementById("originSel"),
-  outputCurrencySelector = document.getElementById("targetSel");
+  outputCurrencySelector = document.getElementById("targetSel"),
+  feeSelector = document.getElementById("feeSel");
 
 export class CalculatorView {
   constructor(availableCurrencies) {
@@ -45,6 +46,10 @@ export class CalculatorView {
     selectionChangedCallback();
     inputCurrencySelector.addEventListener("change", selectionChangedCallback);
     outputCurrencySelector.addEventListener("change", selectionChangedCallback);
+  }
+
+  setFeeChangedCallback(callback) {
+    feeSelector.addEventListener("change", () => callback(feeSelector.value));
   }
 
   setButtonsClickCallback(callback) {

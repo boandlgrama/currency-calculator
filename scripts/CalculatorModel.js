@@ -5,7 +5,8 @@ var displayedInputValue = 0,
   isCalculated = false,
   exchangeRates = [],
   inputRate = 1.0,
-  outputRate = 1.0;
+  outputRate = 1.0,
+  transactionFee = 0.0;
 
 export class CalculatorModel {
   constructor() {
@@ -24,7 +25,8 @@ export class CalculatorModel {
       }
       case "eq": {
         console.log(`Rin: ${inputRate} Rout: ${outputRate}`);
-        displayedOutputValue = (inputRate * displayedInputValue) / outputRate;
+        displayedOutputValue =
+          (inputRate * displayedInputValue * (1 - transactionFee)) / outputRate;
         isCalculated = true;
         break;
       }
@@ -51,5 +53,8 @@ export class CalculatorModel {
     outputRate = exchangeRates.find(item => item.name === currencies.output)
       .rate;
     console.log(outputRate);
+  }
+  setTransactionFee(fee) {
+    transactionFee = fee;
   }
 }

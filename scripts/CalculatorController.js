@@ -18,6 +18,7 @@ class CalculatorController {
       view.setOutputInteger(model.getCurrentOutputValue());
     });
     view.setCurrencyChangedCallback(model.setCurrencies);
+    view.setFeeChangedCallback(model.setTransactionFee);
   }
 }
 

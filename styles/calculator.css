@@ -92,6 +92,14 @@ header {
   padding: 0.5rem;
   text-align: center;
 }
+#feeSelBox{
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 2rem;
+}
+#feeSel{
+  color: white;
+}
 footer {
   text-align: center;
 }
