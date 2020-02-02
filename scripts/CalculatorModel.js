@@ -35,7 +35,7 @@ export class CalculatorModel {
         );
         let amountWithFee = (1.0 + transactionFee) * displayedInputValue;
         console.log(`amountWithFee: ${amountWithFee}`);
-        displayedOutputValue = inputRate * amountWithFee / outputRate;
+        displayedOutputValue = outputRate * amountWithFee / inputRate;
         console.log(`Calculated output: ${displayedOutputValue}`);
         isCalculated = true;
         break;
