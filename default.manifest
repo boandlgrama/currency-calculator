@@ -1,0 +1,19 @@
+CACHE MANIFEST
+
+CACHE:
+index.html
+styles/normalize.css
+styles/calculator.css
+scripts/CalculatorView.js
+scripts/CalculatorModel.js
+scripts/CalculatorController.js
+scripts/CurrencyFetcher.js
+scripts/CurrencyDictionary.js
+res/Calculator.ttf
+res/favicon-16x16.png
+res/favicon-32x32.png
+res/apple-touch-icon.png
+res/safari-pinned-tab.svg
+res/android-chrome-192x192.png
+res/android-chrome-512x512.png
+favicon.ico
