@@ -1,4 +1,5 @@
 import { getExchangeRates } from "./CurrencyFetcher.js";
+import { CurrencySymbolDictionary } from "./CurrencyDictionary.js";
 
 var displayedInputValue = 0,
   displayedOutputValue = 0,
@@ -15,12 +16,20 @@ export class CalculatorModel {
         exchangeRates = rates;
         window.localStorage.exchangeRates = JSON.stringify(exchangeRates);
         getCurrencySymbolsCallback(
-          exchangeRates.map(currency => currency.name)
+          exchangeRates.map(currency => [
+            currency.name,
+            CurrencySymbolDictionary[currency.name]
+          ])
         );
       });
     } else {
       exchangeRates = JSON.parse(window.localStorage.exchangeRates);
-      getCurrencySymbolsCallback(exchangeRates.map(currency => currency.name));
+      getCurrencySymbolsCallback(
+        exchangeRates.map(currency => [
+          currency.name,
+          CurrencySymbolDictionary[currency.name]
+        ])
+      );
     }
   }
   handleInput(input) {
@@ -31,11 +40,12 @@ export class CalculatorModel {
       }
       case "eq": {
         console.log(
-          `Input: ${displayedInputValue} Rin: ${inputRate} Rout: ${outputRate} TransactionFee: ${1.0 + transactionFee}`
+          `Input: ${displayedInputValue} Rin: ${inputRate} Rout: ${outputRate} TransactionFee: ${1.0 +
+            transactionFee}`
         );
         let amountWithFee = (1.0 + transactionFee) * displayedInputValue;
         console.log(`amountWithFee: ${amountWithFee}`);
-        displayedOutputValue = outputRate * amountWithFee / inputRate;
+        displayedOutputValue = (outputRate * amountWithFee) / inputRate;
         console.log(`Calculated output: ${displayedOutputValue}`);
         isCalculated = true;
         break;

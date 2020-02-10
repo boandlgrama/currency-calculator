@@ -60,8 +60,11 @@ export class CalculatorView {
     }
   }
   setAvailableCurrencies(availableCurrencies) {
+    console.log(availableCurrencies);
     availableCurrencies.forEach(currency => {
-      let currencyOption = `<option value="${currency}">${currency}</option>\n`;
+      let [name, [symbol, flag]] = currency;
+      // let currencyOption = `<option value="${name}">${symbol}(${name})</option>\n`;
+      let currencyOption = `<option value="${name}">${symbol} ${flag}</option>\n`;
       inputCurrencySelector.innerHTML += currencyOption;
       outputCurrencySelector.innerHTML += currencyOption;
     });
