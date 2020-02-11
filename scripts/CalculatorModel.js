@@ -10,28 +10,40 @@ var displayedInputValue = 0,
   transactionFee = 0.0;
 
 export class CalculatorModel {
-  constructor(getCurrencySymbolsCallback) {
+  init(getCurrencySymbolsCallback) {
+    let currencySymbols = this.getCurrencySymbols();
+    if (currencySymbols != undefined) {
+      getCurrencySymbolsCallback(currencySymbols);
+    }
     if (navigator.onLine) {
-      getExchangeRates(rates => {
-        exchangeRates = rates;
-        window.localStorage.exchangeRates = JSON.stringify(exchangeRates);
-        getCurrencySymbolsCallback(
-          exchangeRates.map(currency => [
-            currency.name,
-            CurrencySymbolDictionary[currency.name]
-          ])
-        );
-      });
-    } else {
-      exchangeRates = JSON.parse(window.localStorage.exchangeRates);
-      getCurrencySymbolsCallback(
+      this.fetchCurrencies(getCurrencySymbolsCallback);
+    }
+  }
+
+  getCurrencySymbols() {
+    let exchangeRatesStorage = window.localStorage.exchangeRates;
+    if (exchangeRatesStorage != undefined) {
+      exchangeRates = JSON.parse(exchangeRatesStorage);
+      return exchangeRates.map(currency => [
+        currency.name,
+        CurrencySymbolDictionary[currency.name]
+      ]);
+    }
+  }
+
+  fetchCurrencies(callback) {
+    getExchangeRates(rates => {
+      exchangeRates = rates;
+      window.localStorage.exchangeRates = JSON.stringify(exchangeRates);
+      callback(
         exchangeRates.map(currency => [
           currency.name,
           CurrencySymbolDictionary[currency.name]
         ])
       );
-    }
+    });
   }
+
   handleInput(input) {
     switch (input) {
       case "C": {
@@ -39,23 +51,25 @@ export class CalculatorModel {
         break;
       }
       case "eq": {
-        console.log(
+        /* console.log(
           `Input: ${displayedInputValue} Rin: ${inputRate} Rout: ${outputRate} TransactionFee: ${1.0 +
             transactionFee}`
-        );
+        ); */
         let amountWithFee = (1.0 + transactionFee) * displayedInputValue;
-        console.log(`amountWithFee: ${amountWithFee}`);
+        // console.log(`amountWithFee: ${amountWithFee}`);
         displayedOutputValue = (outputRate * amountWithFee) / inputRate;
-        console.log(`Calculated output: ${displayedOutputValue}`);
+        // console.log(`Calculated output: ${displayedOutputValue}`);
         isCalculated = true;
         break;
       }
       default: {
-        let digit = parseInt(input);
-        displayedInputValue = isCalculated
-          ? digit
-          : 10 * displayedInputValue + digit;
-        isCalculated = false;
+        if (displayedInputValue < 99999) {
+          let digit = parseInt(input);
+          displayedInputValue = isCalculated
+            ? digit
+            : 10 * displayedInputValue + digit;
+          isCalculated = false;
+        }
       }
     }
   }

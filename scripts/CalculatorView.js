@@ -19,6 +19,7 @@ var input = document.getElementById("input"),
   feeSelector = document.getElementById("feeSel");
 
 export class CalculatorView {
+  // currencyCallback;
   constructor() {
     feeSelector.value =
       window.localStorage.fee == null ? "0.00" : window.localStorage.fee;
@@ -30,16 +31,16 @@ export class CalculatorView {
     return (input.innerHTML = parseInt(number));
   }
   setCurrencyChangedCallback(callback) {
+    this.currencyCallback = callback;
     let selectionChangedCallback = () => {
       let selection = {
         input: inputCurrencySelector.value,
         output: outputCurrencySelector.value
       };
-      callback(selection);
+      this.currencyCallback(selection);
       window.localStorage.inputCurrency = inputCurrencySelector.value;
       window.localStorage.outputCurrency = outputCurrencySelector.value;
     };
-    selectionChangedCallback();
     inputCurrencySelector.addEventListener("change", selectionChangedCallback);
     outputCurrencySelector.addEventListener("change", selectionChangedCallback);
   }
@@ -60,7 +61,7 @@ export class CalculatorView {
     }
   }
   setAvailableCurrencies(availableCurrencies) {
-    console.log(availableCurrencies);
+    // console.log(availableCurrencies);
     availableCurrencies.forEach(currency => {
       let [name, [symbol, flag]] = currency;
       // let currencyOption = `<option value="${name}">${symbol}(${name})</option>\n`;
@@ -76,5 +77,10 @@ export class CalculatorView {
       window.localStorage.outputCurrency == null
         ? "GBP"
         : window.localStorage.outputCurrency;
+    let selection = {
+      input: inputCurrencySelector.value,
+      output: outputCurrencySelector.value
+    };
+    this.currencyCallback(selection);
   }
 }

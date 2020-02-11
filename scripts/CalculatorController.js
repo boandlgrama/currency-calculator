@@ -2,16 +2,16 @@ import { CalculatorView } from "./CalculatorView.js";
 import { CalculatorModel } from "./CalculatorModel.js";
 
 var view = new CalculatorView(),
-  model = null,
+  model = new CalculatorModel(),
   controller = null;
 
 class CalculatorController {
   init() {
-    model = new CalculatorModel(currencies => {
+    view.setCurrencyChangedCallback(model.setCurrencies);
+    model.init(currencies => {
       view.setAvailableCurrencies(currencies);
-      view.setCurrencyChangedCallback(model.setCurrencies);
-      view.setFeeChangedCallback(model.setTransactionFee);
     });
+    view.setFeeChangedCallback(model.setTransactionFee);
     view.setButtonsClickCallback(input => {
       model.handleInput(input);
       view.setInputInteger(model.getCurrentInputValue());
