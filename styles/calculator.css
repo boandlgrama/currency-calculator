@@ -9,6 +9,7 @@ html {
 }
 
 body {
+  position: fixed;
   vertical-align: bottom;
   width: 100%;
   max-width: 25rem;
