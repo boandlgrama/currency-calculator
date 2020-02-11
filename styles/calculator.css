@@ -15,7 +15,7 @@ body {
   max-width: 25rem;
   height: 100%;
   margin: auto auto 0 auto;
-  font-family: sans-serif;
+  font-family: RussoOne, sans-serif;
   overflow: auto;
   user-select: none;
   -webkit-user-select: none;
@@ -24,6 +24,10 @@ body {
   -o-user-select: none;
   background: black;
   color: white;
+}
+
+button {
+  font-family: RussoOne, sans-serif;
 }
 .grid-container {
   /* width: fit-content; */
@@ -50,6 +54,7 @@ body {
   padding: 0 0.3rem 0 0;
   height: 100%;
   width: 100%;
+  border-color: black;
   background: black;
   color: white;
 }
@@ -97,13 +102,18 @@ header {
   font-size: 2rem;
   padding: 0.5rem;
   text-align: center;
+  color: orange;
 }
 #feeSelBox {
   width: fit-content;
   margin: 0 auto;
   font-size: 2rem;
+  color: white;
+  background: black;
+  border-color: black;
 }
 #feeSel {
+  padding: 1rem;
   color: white;
   background: black;
   border-color: black;
@@ -115,4 +125,8 @@ footer {
 @font-face {
   font-family: calcFont;
   src: url(../res/Calculator.ttf);
+}
+@font-face {
+  font-family: RussoOne;
+  src: url(../res/RussoOne-Regular.ttf);
 }
