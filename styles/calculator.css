@@ -1,6 +1,6 @@
 html {
   height: 100%;
-  overflow: hidden;
+  -webkit-text-size-adjust: none;
 }
 
 body {
@@ -79,7 +79,7 @@ body {
   border: 0.5rem solid black;
   border-radius: 50%;
 }
-button#eq{
+button#eq {
   background: orange;
 }
 button#C {
@@ -92,12 +92,12 @@ header {
   padding: 0.5rem;
   text-align: center;
 }
-#feeSelBox{
+#feeSelBox {
   width: fit-content;
   margin: 0 auto;
   font-size: 2rem;
 }
-#feeSel{
+#feeSel {
   color: white;
   background: black;
   border-color: black;
