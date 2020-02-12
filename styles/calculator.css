@@ -11,7 +11,6 @@ body {
   width: 100vw;
   max-width: 30rem;
   height: 100vh;
-  max-height: 70rem;
   margin: auto auto 0 auto;
   font-family: RussoOne, sans-serif;
   overflow: auto;
@@ -30,14 +29,37 @@ button {
 
 #display {
   display: grid;
-  width: 100%;
+  /* width: 92vw; */
+  margin: 0 5vw 0 3vw;
   grid-template-columns: 44% 12% 44%;
   /* align-content: end; */
 }
+#input,
+#output {
+  font-size: 5vh;
+  font-family: RobotoReg;
+  border: 0.1rem solid darkgray;
+  border-radius: 0.5rem;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: right;
+  padding: 0.5vh 0.5vh 0.5vh 0;
+}
+#arrow {
+  font-size: 5vh;
+  text-align: center;
+  /* padding-top: 1.5vh; */
+  margin: auto;
+  color: orange;
+  font-family: RobotoReg;
+}
 #selector-box {
   display: grid;
-  grid-template-columns: auto 35% auto;
-  margin-top: 0.5rem;
+  width: 95vw;
+  margin: 0.5rem auto 0 auto;
+  grid-template-columns: auto 30% auto;
 }
 .select-box {
   height: fit-content;
@@ -53,7 +75,7 @@ button {
   width: 90%;
   margin-left: auto;
   border: 0;
-  font-size: 2rem;
+  font-size: 3vh;
   font-family: RobotoReg;
   background: gray;
   color: white;
@@ -64,50 +86,18 @@ option {
   text-align: left;
   width: fit-content;
 }
-#input,
-#output {
-  font-size: 3rem;
-  font-family: RobotoReg;
-  border: 0.1rem solid darkgray;
-  border-radius: 0.5rem;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 93%;
-  margin-left: auto;
-  /* font-family: calcFont; */
-  text-align: right;
-  /* margin: 0 0.2rem 0 0; */
-  /* padding: 0.5rem 0.5rem 0 0; */
-  /* height: 100%; */
-  /* width: 100%; */
-}
-#output{
-  margin: 0 auto 0 0;
-}
-#arrow {
-  font-size: 2.5rem;
-  text-align: center;
-  /* padding: 1rem 0 0 0.5rem; */
-  padding-top: 0.5rem;
-  color: orange;
-  font-family: RobotoReg;
-}
 .button-container {
-  /* width: fit-content; */
   display: grid;
-  /* max-height: 80%; */
-  /* width: calc(0.75 * height); */
+  max-height: 80%;
+  height: 60vh;
+  width: calc(0.75 * 60vh);
   margin: 0.5rem auto 0 auto;
-  width: fit-content;
-  /* grid-template-columns: auto auto auto; */
-  /* grid-template-rows: auto auto auto auto; */
-  grid-template-columns: repeat(3, 7rem);
-  grid-template-rows: repeat(4, 7rem);
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto auto;
 }
 
 .grid-item button {
-  font-size: 3rem;
+  font-size: 7vh;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -127,19 +117,11 @@ button#C {
 }
 
 header {
-  font-size: 2rem;
-  padding: 0.5rem;
+  font-size: 4vh;
+  padding: 1vh 0 1vh 0;
   text-align: center;
   color: orange;
 }
-/* #feeSelBox { */
-/* width: fit-content; */
-/* margin: 0 auto; */
-/* font-size: 2rem; */
-/* color: white; */
-/* background: black; */
-/* border-color: black; */
-/* } */
 footer {
   text-align: center;
 }
