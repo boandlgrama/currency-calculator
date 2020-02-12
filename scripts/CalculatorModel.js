@@ -51,18 +51,12 @@ export class CalculatorModel {
         break;
       }
       case "eq": {
-        /* console.log(
-          `Input: ${displayedInputValue} Rin: ${inputRate} Rout: ${outputRate} TransactionFee: ${1.0 +
-            transactionFee}`
-        ); */
         let amountWithFee = (1.0 + transactionFee) * displayedInputValue;
-        // console.log(`amountWithFee: ${amountWithFee}`);
         let outputValue = (outputRate * amountWithFee) / inputRate;
         if (outputValue > 999999) {
           outputValue = 999999;
         }
         displayedOutputValue = outputValue;
-        // console.log(`Calculated output: ${displayedOutputValue}`);
         isCalculated = true;
         break;
       }

@@ -29,10 +29,8 @@ button {
 
 #display {
   display: grid;
-  /* width: 92vw; */
   margin: 0 5vw 0 3vw;
   grid-template-columns: 44% 12% 44%;
-  /* align-content: end; */
 }
 #input,
 #output {
@@ -50,7 +48,6 @@ button {
 #arrow {
   font-size: 5vh;
   text-align: center;
-  /* padding-top: 1.5vh; */
   margin: auto;
   color: orange;
   font-family: RobotoReg;
