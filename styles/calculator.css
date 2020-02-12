@@ -54,8 +54,8 @@ button {
 }
 #selector-box {
   display: grid;
-  width: 95vw;
-  margin: 0.5rem auto 0 auto;
+  margin: 2vw 3vw 0 3vw;
+  /* margin: 0.5rem auto 0 auto; */
   grid-template-columns: auto 30% auto;
 }
 .select-box {
