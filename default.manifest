@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# V0.15
+# V0.52
 
 CACHE:
 index.html
@@ -10,8 +10,8 @@ scripts/CalculatorModel.js
 scripts/CurrencyFetcher.js
 scripts/CalculatorController.js
 scripts/CurrencyDictionary.js
-res/Calculator.ttf
 res/RussoOne-Regular.ttf
+res/Roboto-Regular.ttf
 res/favicon-16x16.png
 res/favicon-32x32.png
 res/apple-touch-icon.png

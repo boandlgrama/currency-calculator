@@ -38,18 +38,28 @@
   </head>
   <body>
     <header>Currency Calculator</header>
-    <div class="grid-container">
-      <div id="display">
-        <span id="input">0</span>
-        <div class="select-box">
-          <select id="originSel" name="Target Currency"></select>
-        </div>
-        <a id="arrow">&#x21C4;</a>
-        <span id="output">0</span>
-        <div class="select-box">
-          <select id="targetSel" name="Origin Currency"></select>
-        </div>
+    <div id="display">
+      <span id="input">0</span>
+      <a id="arrow">➜</a>
+      <span id="output">0</span>
+    </div>
+    <div id="selector-box">
+      <div class="select-box">
+        <select id="originSel" name="Target Currency"></select>
       </div>
+      <div class="select-box">
+        <select id="feeSel" name="Transaction Fee">
+          <option value="0.00">+0%</option>
+          <option value="0.02">+2%</option>
+          <option value="0.04">+4%</option>
+          <option value="0.06">+6%</option>
+        </select>
+      </div>
+      <div class="select-box">
+        <select id="targetSel" name="Origin Currency"></select>
+      </div>
+    </div>
+    <div class="button-container">
       <div class="grid-item"><button id="7">7</button></div>
       <div class="grid-item"><button id="8">8</button></div>
       <div class="grid-item"><button id="9">9</button></div>
@@ -63,16 +73,7 @@
       <div class="grid-item"><button id="0">0</button></div>
       <div class="grid-item"><button id="eq">=</button></div>
     </div>
-    <div id="feeSelBox">
-      <span>Transaction Fee:</span>
-      <select id="feeSel" name="Transaction Fee">
-        <option value="0.00">0%</option>
-        <option value="0.02">2%</option>
-        <option value="0.04">4%</option>
-        <option value="0.06">6%</option>
-      </select>
-    </div>
-    <footer>© 2020 Manuel Hufnagel V 0.15</footer>
+    <footer>© 2020 Manuel Hufnagel V 0.17</footer>
     <script type="module" src="scripts/CalculatorController.js"></script>
   </body>
 </html>

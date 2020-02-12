@@ -57,13 +57,17 @@ export class CalculatorModel {
         ); */
         let amountWithFee = (1.0 + transactionFee) * displayedInputValue;
         // console.log(`amountWithFee: ${amountWithFee}`);
-        displayedOutputValue = (outputRate * amountWithFee) / inputRate;
+        let outputValue = (outputRate * amountWithFee) / inputRate;
+        if (outputValue > 999999) {
+          outputValue = 999999;
+        }
+        displayedOutputValue = outputValue;
         // console.log(`Calculated output: ${displayedOutputValue}`);
         isCalculated = true;
         break;
       }
       default: {
-        if (displayedInputValue < 99999) {
+        if (displayedInputValue < 100000) {
           let digit = parseInt(input);
           displayedInputValue = isCalculated
             ? digit

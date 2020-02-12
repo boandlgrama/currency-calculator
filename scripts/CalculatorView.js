@@ -63,7 +63,9 @@ export class CalculatorView {
   setAvailableCurrencies(availableCurrencies) {
     // console.log(availableCurrencies);
     availableCurrencies.forEach(currency => {
-      let [name, [symbol, flag]] = currency;
+      let [name, symbols] = currency;
+        console.log(symbols);
+      let [symbol, flag] = symbols;
       // let currencyOption = `<option value="${name}">${symbol}(${name})</option>\n`;
       let currencyOption = `<option value="${name}">${symbol} ${flag}</option>\n`;
       inputCurrencySelector.innerHTML += currencyOption;
